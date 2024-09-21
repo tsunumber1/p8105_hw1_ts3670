@@ -2,8 +2,7 @@
 title: "p8105_hw1_ts3670"
 author: "Tong Su"
 date: "2024-09-20"
-output:
-  pdf_document: default
+output: github_document
 ---
 ```{r}
 library(tidyverse)
