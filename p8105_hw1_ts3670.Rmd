@@ -26,7 +26,45 @@ plot_df = ggplot(penguins,  aes(x = bill_length_mm, y = flipper_length_mm, colou
 ```{r}
 ggsave("Bill_length_mm vs Flipper_length_mm.jpg", plot = plot_df)
 ```
+# Problem 2
+#Data Frame
+```{r}
+set.seed(123)
+
+random_sample = rnorm(10, mean = 0, sd = 1)
+logical_vector = random_sample > 0
+character_vector = c('Empathy', 'Self-awareness', 'Adaptability',
+'Curiosity', 'Motivation', 'Analytics', 'Passionate', 'Optimism', 'Open-Minded',  'Belief')
+factor_vector = factor(sample(c('low', 'medium', 'high'), size = 10, replace = TRUE))
+
+df = data.frame(random_sample, logical_vector, character_vector, factor_vector)
+
+df
+```
+#Mean of each variable in the data frame
+```{r}
+mean_random_sample = mean(df %>% pull(random_sample))
+mean_logical_vector = mean(df %>% pull(logical_vector))
+mean_character_vector = try(mean(df %>% pull(character_vector)), silent=FALSE) 
+mean_factor_vector = try(mean(df %>% pull(factor_vector)), silent=FALSE)
+# results
+print(mean_random_sample)
+print(mean_logical_vector)
+print(mean_character_vector)
+print(mean_factor_vector)
+```
+Illustration: `character_vector` and `factor_vector` are not numerical nor logical so they cannot be taken the mean.
+
+#Convert variables to numeric
+```{r}
+numeric_logical = as.numeric(logical_vector)
+numeric_character = (as.numeric(character_vector))
+numeric_factor = (as.numeric(factor_vector))
+
+# output the result
+print(numeric_logical)
+print(numeric_character)
+print(numeric_factor)
+```
 
 
-
-# Section 2
