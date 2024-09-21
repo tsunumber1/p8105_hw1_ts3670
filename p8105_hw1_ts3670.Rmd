@@ -1,21 +1,32 @@
 ---
-title: "Simple document"
-output: html_document
+title: "p8105_hw1_ts3670"
+author: "Tong Su"
+date: "2024-09-20"
+output:
+  pdf_document: default
 ---
-
-I'm an R Markdown document! 
-
-# Section 1
-
-Here's a **code chunk** that samples from 
-a _normal distribution_:
-
 ```{r}
-samp = rnorm(100)
-length(samp)
+library(tidyverse)
+library(ggplot2)
 ```
 
-# Section 2
+# Problem 1
+# Load the penguins dataset
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+# Short Discription
 
-I can take the mean of the sample, too!
-The mean is `r mean(samp)`.
+The `penguins` shows 8 variables about the information of penguins including `species`, `island`, `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, `body_mass_g`, `sex`, `year`. It has `r nrow(penguins)` rows and `r ncol(penguins)` columns. The mean of `flipper_length_mm` is `r mean(penguins$flipper_length_mm, na.rm=TRUE)`.
+
+# Scatterpolot and Saving 
+```{r}
+plot_df = ggplot(penguins,  aes(x = bill_length_mm, y = flipper_length_mm, colour =species )) + geom_point(na.rm = TRUE) + labs(title = "Bill_length_mm vs Flipper_length_mm")
+```
+```{r}
+ggsave("Bill_length_mm vs Flipper_length_mm.jpg", plot = plot_df)
+```
+
+
+
+# Section 2
