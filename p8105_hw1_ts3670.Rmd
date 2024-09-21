@@ -57,14 +57,9 @@ Illustration: `character_vector` and `factor_vector` are not numerical nor logic
 
 #Convert variables to numeric
 ```{r}
-numeric_logical = as.numeric(logical_vector)
-numeric_character = (as.numeric(character_vector))
-numeric_factor = (as.numeric(factor_vector))
-
-# output the result
-print(numeric_logical)
-print(numeric_character)
-print(numeric_factor)
+df %>% pull(logical_vector) %>% as.numeric()
+df %>% pull(character_vector) %>% as.numeric()
+df %>% pull(factor_vector) %>% as.numeric()
 ```
 
 
